@@ -8,7 +8,8 @@ class Product extends Component {
             <Fragment>
                 <div className="header">
                     <div className="logo">
-                        <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/jznhmlcmc5dia2qrmc7r" alt="logo"/>
+                        <img src="https://www.zilliondesigns.com/blog/wp-content/uploads/001-min.png" alt="logo"
+                        height="70px"/>
                     </div>
                     <div className="troley">
                         <img src={Troley} alt="troley"/>
@@ -17,7 +18,8 @@ class Product extends Component {
                 </div>
                 <div className="card">
                     <div className="img-thumb-prod">
-                        <img src="https://jualayamhias.com/wp-content/uploads/2017/12/Cemani-chicken-e1513914416319.jpg" alt="ayam kecap"/>
+                        <img src="https://jualayamhias.com/wp-content/uploads/2017/12/Cemani-chicken-e1513914416319.jpg" alt="ayam kecap"
+                        height="320px" width="320px" />
                     </div>
                     <p className="product-title">ayam bumbu kecap</p>
                     <p className="product-price">Rp 500</p>

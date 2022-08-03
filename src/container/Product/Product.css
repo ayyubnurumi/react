@@ -37,3 +37,28 @@
     width: 320px;
     border-radius: 4px;
 }
+
+.img-thumb-prod {
+    
+}
+
+p.product-title {
+
+}
+
+p.product-price {
+    color: #8d7f2d;
+    font-size: 12px;
+}
+
+.counter {
+
+}
+
+.minus {
+    background: #2d3c8d;
+}
+
+.plus {
+    background: #2d3c8d;
+}
