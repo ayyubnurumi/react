@@ -1,9 +1,9 @@
 import React from "react";
 
-class stateFullComponent extends React.Component {
+class StateFullComponent extends React.Component {
   render() {
     return <p>silahkan di isi</p>
   }
 };
 
-export default stateFullComponent;
+export default StateFullComponent;
