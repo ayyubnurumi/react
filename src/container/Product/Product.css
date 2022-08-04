@@ -39,11 +39,11 @@
 }
 
 .img-thumb-prod {
-    
+    border-radius: 4px;    
 }
 
 p.product-title {
-
+    font-weight: 300;
 }
 
 p.product-price {
@@ -52,7 +52,7 @@ p.product-price {
 }
 
 .counter {
-
+    text-align: center;
 }
 
 .minus {
