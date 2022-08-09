@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 // import Home from './container/Home/Home';
-import Home from '../src/component/pages/Home';
+import Home from '../src/component/Finance/pages/Home'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
