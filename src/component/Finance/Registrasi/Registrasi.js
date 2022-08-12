@@ -7,23 +7,29 @@ class Registrasi extends Component {
       <>
         <div>
           <div className="form">
-            <button type="close">x</button>
+            <div className="x">
+              <button className="x-btn">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
             <label className="header">Registrasi</label>
-            <input type="text" placeholder="masukkan anu"/>
-            <input type="text" placeholder="masukkan anu"/>
-            <input type="text" placeholder="masukkan anu"/>
-            <input type="text" placeholder="masukkan anu"/>
-            <input type="text" placeholder="masukkan anu"/>
-            <input type="text" placeholder="masukkan anu"/>
-            <input type="text" placeholder="masukkan anu"/>
-            <input type="text" placeholder="masukkan anu"/>
-            <input type="text" placeholder="masukkan anu"/>
-            <button>Register</button>
+            <input type="text" placeholder="masukkan nama organisasi/perusahaan" />
+            <input type="text" placeholder="masukkan negara" />
+            <input type="text" placeholder="masukkan provinsi" />
+            <input type="text" placeholder="masukkan kota" />
+            <input type="text" placeholder="masukkan alamat" />
+            <input type="text" placeholder="masukkan kode pos" />
+            <input type="text" placeholder="masukkan mata uang" />
+            <input type="text" placeholder="masukkan bahasa" />
+            <input type="text" placeholder="masukkan tanggal" />
+            <div className="regist">
+              <button className="regist-btn">Register</button>
+            </div>
           </div>
         </div>
       </>
-    )
-  };
-};
+    );
+  }
+}
 
 export default Registrasi;

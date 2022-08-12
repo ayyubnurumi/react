@@ -1,14 +1,35 @@
 .form {
-    float: none;
-    align-items: center;
+    width: 400px;
+    height: fit-content;
     border: 1px solid tomato;
+    border-bottom: 10px solid tomato;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    margin: 50px;
-    margin-left: 400px;
-    margin-right: 400px;
+    margin: auto;
+    margin-top: 50px;
     padding: 10px;
+    padding-top: 0px;
+    overflow: visible;
+    position: relative;
+}
+
+.x {
+    text-align: right;
+    margin-right: -10px;
+    margin-left: -10px;
+    background-color: tomato;
+}
+
+.x-btn {
+    background-color: tomato;
+    border-color: tomato;
+    color: white;
+}
+
+.x-btn:hover {
+    cursor: pointer;
+    background-color: rgb(134, 74, 64);
 }
 
 .header {
@@ -18,5 +39,20 @@
 
 input {
     margin: 10px;
-    width: 300px;
+    padding-left: 10px;
+    width: 360px;
+    height: 20px;
+}
+
+.regist {
+    text-align: center;
+}
+
+.regist-btn {
+    width: 100px;
+    text-align: center;
+}
+
+.regist-btn:hover {
+    cursor: pointer;
 }
