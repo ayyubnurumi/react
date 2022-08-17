@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-// import Home from './container/Home/Home';
+import Home from './container/Home/Home';
 // import Home from '../src/component/Finance/pages/Home'
-import Registrasi from './component/Finance/Registrasi/Registrasi';
+// import Registrasi from './component/Finance/Registrasi/Registrasi';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Registrasi />
+    <Home />
   </React.StrictMode>
 )
 
