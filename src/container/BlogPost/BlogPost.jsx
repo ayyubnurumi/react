@@ -19,7 +19,7 @@ class BlogPost extends Component {
 
   handleRemove = (data) => {
     //console.log(data)
-    axios.delete("http://localhost:3004/posts/$(data)").then((ress) => {
+    axios.delete("http://localhost:3004/posts/" + (data)).then((ress) => {
       this.getPostAPI()
     })
   }
@@ -32,7 +32,7 @@ class BlogPost extends Component {
     //       post: json,
     //     })
     //   );
-    this.getPostAPI()
+    this.getPostAPI();
   }
 
   render() {
