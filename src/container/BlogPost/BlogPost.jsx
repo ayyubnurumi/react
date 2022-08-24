@@ -12,22 +12,43 @@ class BlogPost extends Component {
       body: "",
       userId: 1,
     },
+    isUpdate = false
   };
 
   getPostAPI = () => {
-    axios.get("http://localhost:3004/posts?_sort=id&_order=desc").then((result) => {
-      this.setState({
-        post: result.data,
+    axios
+      .get("http://localhost:3004/posts?_sort=id&_order=desc")
+      .then((result) => {
+        this.setState({
+          post: result.data,
+        });
       });
-    });
   };
 
   postDataToAPI = () => {
-    axios.post("http://localhost:3004/posts", this.state.formBlogPost).then((res) => {
-      console.log(res);
+    axios.post("http://localhost:3004/posts", this.state.formBlogPost).then(
+      (res) => {
+        console.log(res);
+        this.getPostAPI();
+      },
+      (err) => {
+        console.log("error: ", err);
+      }
+    );
+  };
+
+  putDataToAPi = () => {
+    axios.put("http://localhost:3004/posts/" + data), this.state.formBlogPost.then((ress) => {
+      console.log(ress);
       this.getPostAPI();
-    }, (err) => {
-      console.log('error: ', err);
+    })
+  }
+
+  handleUpdate = (data) => {
+    console.log(data);
+    this.setState({
+      formBlogPost: data
+      isUpdate = true
     })
   }
 
@@ -40,18 +61,22 @@ class BlogPost extends Component {
 
   handleFormChange = (event) => {
     // console.log("form changed", event.target);
-    let formBlogPostNew = {...this.state.formBlogPost};
+    let formBlogPostNew = { ...this.state.formBlogPost };
     let timestamp = new Date().getTime();
     formBlogPostNew[event.target.name] = event.target.value;
-    formBlogPostNew['id'] = timestamp;
+    formBlogPostNew["id"] = timestamp;
     this.setState({
-      formBlogPost: formBlogPostNew
-    })
+      formBlogPost: formBlogPostNew,
+    });
   };
 
   handleSubmit = () => {
-    this.postDataToAPI();
-  }
+    if (isUpdate){
+      this.putDataToAPi();
+    }else{
+      this.postDataToAPI();
+    }
+  };
 
   componentDidMount() {
     // fetch("https://jsonplaceholder.typicode.com/posts")
@@ -73,6 +98,7 @@ class BlogPost extends Component {
           <input
             type="text"
             name="title"
+            value={this.state.formBlogPost.title}
             placeholder="add title"
             onChange={this.handleFormChange}
           />
@@ -82,13 +108,16 @@ class BlogPost extends Component {
             id="body"
             cols="30"
             rows="10"
+            value={this.state.formBlogPost.body}
             placeholder="add blog content"
             onChange={this.handleFormChange}
           ></textarea>
-          <button className="btn-submit" onClick={this.handleSubmit}>save</button>
+          <button className="btn-submit" onClick={this.handleSubmit}>
+            save
+          </button>
         </div>
         {this.state.post.map((post) => {
-          return <Post key={post.id} data={post} remove={this.handleRemove} />;
+          return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} />;
         })}
       </Fragment>
     );
