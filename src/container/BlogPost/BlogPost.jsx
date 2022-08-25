@@ -12,7 +12,7 @@ class BlogPost extends Component {
       body: "",
       userId: 1,
     },
-    isUpdate = false
+    isUpdate: false,
   };
 
   getPostAPI = () => {
@@ -30,6 +30,14 @@ class BlogPost extends Component {
       (res) => {
         console.log(res);
         this.getPostAPI();
+        this.setState({
+          formBlogPost: {
+            id: 1,
+            title: "",
+            body: "",
+            userId: 1
+          }
+        })
       },
       (err) => {
         console.log("error: ", err);
@@ -38,23 +46,34 @@ class BlogPost extends Component {
   };
 
   putDataToAPi = () => {
-    axios.put("http://localhost:3004/posts/" + data), this.state.formBlogPost.then((ress) => {
-      console.log(ress);
-      this.getPostAPI();
-    })
-  }
+    axios
+      .put("http://localhost:3004/posts/" + this.state.formBlogPost.id, this.state.formBlogPost)
+      .then((res) => {
+        console.log(res);
+        this.getPostAPI();
+        this.setState({
+          isUpdate: false,
+          formBlogPost: {
+            id: 1,
+            title: "",
+            body: "",
+            userId: 1
+          }
+        })
+      });
+  };
 
   handleUpdate = (data) => {
     console.log(data);
     this.setState({
-      formBlogPost: data
-      isUpdate = true
-    })
-  }
+      formBlogPost: data,
+      isUpdate: true,
+    });
+  };
 
   handleRemove = (data) => {
     //console.log(data)
-    axios.delete("http://localhost:3004/posts/" + data).then((ress) => {
+    axios.delete("http://localhost:3004/posts/" + data).then((res) => {
       this.getPostAPI();
     });
   };
@@ -63,17 +82,19 @@ class BlogPost extends Component {
     // console.log("form changed", event.target);
     let formBlogPostNew = { ...this.state.formBlogPost };
     let timestamp = new Date().getTime();
+    if (!this.state.isUpdate) {
+      formBlogPostNew["id"] = timestamp;
+    }
     formBlogPostNew[event.target.name] = event.target.value;
-    formBlogPostNew["id"] = timestamp;
     this.setState({
       formBlogPost: formBlogPostNew,
     });
   };
 
   handleSubmit = () => {
-    if (isUpdate){
+    if (this.state.isUpdate) {
       this.putDataToAPi();
-    }else{
+    } else {
       this.postDataToAPI();
     }
   };
@@ -117,7 +138,14 @@ class BlogPost extends Component {
           </button>
         </div>
         {this.state.post.map((post) => {
-          return <Post key={post.id} data={post} remove={this.handleRemove} update={this.handleUpdate} />;
+          return (
+            <Post
+              key={post.id}
+              data={post}
+              remove={this.handleRemove}
+              update={this.handleUpdate}
+            />
+          );
         })}
       </Fragment>
     );
