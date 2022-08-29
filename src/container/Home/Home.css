@@ -1,0 +1,15 @@
+.navigasi {
+    background-color: aquamarine;
+    height: 50px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.nav-btn {
+    background-color: rgb(114, 114, 170);
+    color: white;
+    border: 1px blue solid;
+    height: 30px;
+    width: 40px;
+    margin: 20px;
+}

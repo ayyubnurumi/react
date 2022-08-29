@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import BlogPost from "../BlogPost/BlogPost";
-// import YTComp from "../../component/YTComp/YTComp";
-// import LifeCycleComp from "../LifeCycleComp/LifeCycleComp";
-// import Product from "../Product/Product";
+import BlogPost from "../pages/BlogPost/BlogPost";
+import YTPage from "../pages/YTPage/YTPage";
+import LifeCycleComp from "../pages/LifeCycleComp/LifeCycleComp";
+import Product from "../pages/Product/Product";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import "./Home.css";
 
 class Home extends Component {
   state = {
@@ -13,32 +15,22 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        {/* <p>youtube component</p>
-        <hr/>
-        <YTComp time="19.95" title="konspirasi op. eps.1001" desc="978.785 kali ditonton. 29 hari yang lalu."/>
-        <YTComp time="11.17" title="konspirasi op. eps.1002" desc="876.786 kali ditonton. 22 hari yang lalu."/>
-        <YTComp time="11.95" title="konspirasi op. eps.1003" desc="1.345.567 kali ditonton. 8 hari yang lalu."/>
-        <YTComp time="1.35.11" title="konspirasi op. eps.1004" desc=" 1.456.567 kali ditonton. 1 hari yang lalu."/>
-        <YTComp />
-        <hr/>
-        <p>counter</p>
-        <hr/>
-        <Product /> */}
-        {/* <p>lifecycle component</p>
-        <hr/>
-        {
-          this.state.showComponent 
-          ?
-          <LifeCycleComp/>
-          : null
-        }
-        <hr/> */}
-        <p>Blog Post</p>
-        <hr/>
-        <BlogPost />
-        
-      </div>
+      <BrowserRouter>
+        <div>
+          <nav className="navigasi">
+            <Link to="/">Blogpost</Link>
+            <Link to="/product">Product</Link>
+            <Link to="/lifecycle">Life Cycle</Link>
+            <Link to="/youtube-page">Video Page</Link>
+          </nav>
+        </div>
+        <Routes>
+          <Route path="/" exact element={<BlogPost />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/lifecycle" element={<LifeCycleComp />} />
+          <Route path="/youtube-page" element={<YTPage />} />
+        </Routes>        
+      </BrowserRouter>  
     )
   }
 }
