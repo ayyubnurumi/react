@@ -1,9 +1,15 @@
+// libraries
 import React, { Component } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+// pages
 import BlogPost from "../pages/BlogPost/BlogPost";
 import YTPage from "../pages/YTPage/YTPage";
 import LifeCycleComp from "../pages/LifeCycleComp/LifeCycleComp";
 import Product from "../pages/Product/Product";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import FullPost from "../pages/BlogPost/FullPost/FullPost";
+
+// style
 import "./Home.css";
 
 class Home extends Component {
@@ -15,7 +21,7 @@ class Home extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div>
           <nav className="navigasi">
             <Link to="/">Blogpost</Link>
@@ -26,11 +32,14 @@ class Home extends Component {
         </div>
         <Routes>
           <Route path="/" exact element={<BlogPost />} />
+          <Route path="/fullpost" element={<FullPost />}>
+            <Route path=":id" element={<FullPost />} />
+          </Route>
           <Route path="/product" element={<Product />} />
           <Route path="/lifecycle" element={<LifeCycleComp />} />
           <Route path="/youtube-page" element={<YTPage />} />
         </Routes>        
-      </BrowserRouter>  
+      </Router>  
     )
   }
 }
