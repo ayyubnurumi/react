@@ -1,5 +1,5 @@
 // libraries
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 // pages
@@ -12,37 +12,26 @@ import FullPost from "../pages/BlogPost/FullPost/FullPost";
 // style
 import "./Home.css";
 
-class Home extends Component {
-  state = {
-    showComponent: true
-  }
-
-  componentDidMount(){}
-
-  render() {
-    return (
-      <Router>
-        <div>
-          <nav className="navigasi">
-            <Link to="/">Blogpost</Link>
-            <Link to="/product">Product</Link>
-            <Link to="/lifecycle">Life Cycle</Link>
-            <Link to="/youtube-page">Video Page</Link>
-          </nav>
-        </div>
-        <Routes>
-          <Route path="/" exact element={<BlogPost />} />
-          <Route path="/fullpost" element={<FullPost />}>
-            <Route path=":id" element={<FullPost />} />
-          </Route>
-          <Route path="/product" element={<Product />} />
-          <Route path="/lifecycle" element={<LifeCycleComp />} />
-          <Route path="/youtube-page" element={<YTPage />} />
-        </Routes>        
-      </Router>  
-    )
-  }
-}
-
-
-export default Home;
+export const Home = () => {
+  return (
+    <Router>
+      <div>
+        <nav className="navigasi">
+          <Link className="nav-btn" to="/" >Blogpost</Link>
+          <Link className="nav-btn" to="/product">Product</Link>
+          <Link className="nav-btn" to="/lifecycle">Life Cycle</Link>
+          <Link className="nav-btn" to="/youtube-page">Video Page</Link>
+        </nav>
+      </div>
+      <Routes>
+        <Route path="/" exact element={<BlogPost />} />
+        <Route path="/fullpost" element={<FullPost />}>
+          <Route path=":id" element={<FullPost />} />
+        </Route>
+        <Route path="/product" element={<Product />} />
+        <Route path="/lifecycle" element={<LifeCycleComp />} />
+        <Route path="/youtube-page" element={<YTPage />} />
+      </Routes>
+    </Router>
+  );
+};
