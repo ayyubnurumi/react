@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component, Fragment } from "react";
-import Post from "../../../component/Post/Post";
+import {Post} from "../../../component/Post/Post";
 import "./BlogPost.css";
 
 class BlogPost extends Component {
@@ -134,17 +134,19 @@ class BlogPost extends Component {
             save
           </button>
         </div>
-        {this.state.post.map((post) => {
-          return (
-            <Post
-              key={post.id}
-              data={post}
-              remove={this.handleRemove}
-              update={this.handleUpdate}
-              goFullPost={this.handleFullPost}
-            />
-          );
-        })}
+        <div className="post-area">
+          {this.state.post.map((post) => {
+            return (
+              <Post
+                key={post.id}
+                data={post}
+                remove={this.handleRemove}
+                update={this.handleUpdate}
+                goFullPost={this.handleFullPost}
+              />
+            );
+          })}
+        </div>
       </Fragment>
     );
   }

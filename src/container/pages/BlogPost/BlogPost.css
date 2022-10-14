@@ -1,41 +1,35 @@
-.section-title {
-    margin-left: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #4a4a4a;
-}
-
-
 .post {
     display: flex;
     border: 1px solid rgba(0, 0, 0, 0.3);
-    width: 500px;
+    width: 45%;
+    height: 150px;
     padding: 10px;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
-    margin-bottom: 20px;
-    margin-left: 20px;
+    margin: auto;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
-
 
 .img-thumb {
-    width: 200px;
-    height: 150px;
-    margin-right: 20px;
+    max-width: 200px;
+    max-height: 150px;
+    margin-right: 10px;
 }
-
 
 .img-thumb img {
-    width: 200px;
-    height: 150px;
+    max-width: 200px;
+    max-height: 150px;
     object-fit: cover;
+    border-radius: 4px;
 }
-
 
 .content {
-    flex: 1;
+    width: 65%;
+    height: 150px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
-
 
 .content p.title {
     margin: 0px;
@@ -44,7 +38,6 @@
     color: #3d4a6e;
     margin-bottom: 16px;
 }
-
 
 .content p.desc {
     margin: 0px;
@@ -75,10 +68,19 @@
     cursor: pointer;
 }
 
+.section-title {
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
 .form-add-post {
     box-shadow: 0px 0px 16px rgba(0,0,0,0.5);
-    width: 500px;
-    margin-left: 20px;
+    position: absolute;
+    left: 20px;
+    width: 45%;
+    height: 70%;
     padding: 10px;
     margin-bottom: 50px;
     border-radius: 4px;
@@ -104,6 +106,10 @@
     color: #607D88;
 }
 
+.form-add-post textarea {
+    height: 55%;
+}
+
 button.btn-submit {
     outline: none;
     border: 1px solid #2196F3;
@@ -112,5 +118,10 @@ button.btn-submit {
     color: #2196F3;
     text-transform: uppercase;
     font-weight: bold;
-    margin-top: 30px;
+    margin-top: 10px;
+}
+
+.post-area {
+    position: absolute;
+    right: 20px;
 }

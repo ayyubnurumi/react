@@ -1,6 +1,6 @@
 import React from "react";
 
-const Post = (props) => {
+export const Post = (props) => {
     return (
         <div className="post">
           <div className="img-thumb">
@@ -15,5 +15,3 @@ const Post = (props) => {
         </div>
     )
 }
-
-export default Post;
