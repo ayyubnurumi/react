@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component, Fragment } from "react";
-import {Post} from "../../../component/Post/Post";
+import { Post } from "../../../component/Post/Post";
 import "./BlogPost.css";
 
 class BlogPost extends Component {
@@ -13,6 +13,7 @@ class BlogPost extends Component {
       userId: 1,
     },
     isUpdate: false,
+    ellipsis: true,
   };
 
   getPostAPI = () => {
@@ -35,9 +36,9 @@ class BlogPost extends Component {
             id: 1,
             title: "",
             body: "",
-            userId: 1
-          }
-        })
+            userId: 1,
+          },
+        });
       },
       (err) => {
         console.log("error: ", err);
@@ -47,7 +48,10 @@ class BlogPost extends Component {
 
   putDataToAPi = () => {
     axios
-      .put("http://localhost:3004/posts/" + this.state.formBlogPost.id, this.state.formBlogPost)
+      .put(
+        "http://localhost:3004/posts/" + this.state.formBlogPost.id,
+        this.state.formBlogPost
+      )
       .then((res) => {
         console.log(res);
         this.getPostAPI();
@@ -57,9 +61,9 @@ class BlogPost extends Component {
             id: 1,
             title: "",
             body: "",
-            userId: 1
-          }
-        })
+            userId: 1,
+          },
+        });
       });
   };
 
@@ -134,19 +138,18 @@ class BlogPost extends Component {
             save
           </button>
         </div>
-        <div className="post-area">
-          {this.state.post.map((post) => {
-            return (
-              <Post
-                key={post.id}
-                data={post}
-                remove={this.handleRemove}
-                update={this.handleUpdate}
-                goFullPost={this.handleFullPost}
-              />
-            );
-          })}
-        </div>
+        {this.state.post.map((post) => {
+          return (
+            <Post
+              key={post.id}
+              data={post}
+              ellipsis={this.state.ellipsis}
+              remove={this.handleRemove}
+              update={this.handleUpdate}
+              goFullPost={this.handleFullPost}
+            />
+          );
+        })}
       </Fragment>
     );
   }
