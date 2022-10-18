@@ -1,7 +1,11 @@
+import { Pagination } from "antd";
 import axios from "axios";
 import React, { Component, Fragment } from "react";
+import { Navigate } from "react-router";
 import { Post } from "../../../component/Post/Post";
 import "./BlogPost.css";
+
+const pagesize = 3
 
 class BlogPost extends Component {
   state = {
@@ -12,6 +16,10 @@ class BlogPost extends Component {
       body: "",
       userId: 1,
     },
+    totalPage: 0,
+    current: 1,
+    minIndex: 0,
+    maxIndex: 0,
     isUpdate: false,
     ellipsis: true,
   };
@@ -22,6 +30,9 @@ class BlogPost extends Component {
       .then((result) => {
         this.setState({
           post: result.data,
+          totalPage: result.length / pagesize,
+          minIndex: 0,
+          maxIndex: pagesize
         });
       });
   };
@@ -95,6 +106,14 @@ class BlogPost extends Component {
     });
   };
 
+  handlePage = (page) => {
+    this.setState({
+      current: page,
+      minIndex: (page - 1) * pagesize,
+      maxIndex: page * pagesize
+    });
+  };
+
   handleSubmit = () => {
     if (this.state.isUpdate) {
       this.putDataToAPi();
@@ -103,8 +122,8 @@ class BlogPost extends Component {
     }
   };
 
-  handleFullPost = (id) => {
-    this.props.history.push(`/fullpost/${id}`);
+  handleFullPost = () => {
+    <Navigate to='/fullpost' replace={true} />
   };
 
   componentDidMount() {
@@ -112,6 +131,7 @@ class BlogPost extends Component {
   }
 
   render() {
+    let { post, formBlogPost, ellipsis, current, minIndex, maxIndex } = this.state;
     return (
       <Fragment>
         <p className="section-title">blog post</p>
@@ -120,7 +140,7 @@ class BlogPost extends Component {
           <input
             type="text"
             name="title"
-            value={this.state.formBlogPost.title}
+            value={formBlogPost.title}
             placeholder="add title"
             onChange={this.handleFormChange}
           />
@@ -130,7 +150,7 @@ class BlogPost extends Component {
             id="body"
             cols="30"
             rows="10"
-            value={this.state.formBlogPost.body}
+            value={formBlogPost.body}
             placeholder="add blog content"
             onChange={this.handleFormChange}
           ></textarea>
@@ -138,18 +158,29 @@ class BlogPost extends Component {
             save
           </button>
         </div>
-        {this.state.post.map((post) => {
+        {post.map((post, index) => {
           return (
-            <Post
-              key={post.id}
-              data={post}
-              ellipsis={this.state.ellipsis}
-              remove={this.handleRemove}
-              update={this.handleUpdate}
-              goFullPost={this.handleFullPost}
-            />
+            index >= minIndex &&
+              index < maxIndex && (
+                <Post
+                  key={post.id}
+                  data={post}
+                  ellipsis={ellipsis}
+                  remove={this.handleRemove}
+                  update={this.handleUpdate}
+                  goFullPost={this.handleFullPost}
+                />
+              )
           );
         })}
+        <Pagination
+          className="pagination"
+          showSizeChanger={false}
+          pageSize={pagesize}
+          current={current}
+          total={post.length}
+          onChange={this.handlePage}
+        />
       </Fragment>
     );
   }

@@ -39,6 +39,10 @@
     margin-bottom: 5px;
 }
 
+.content .Title:hover {
+    cursor: pointer;
+}
+
 .content .Paragraph {
     margin: 0px;
     font-size: 16px;
@@ -123,4 +127,10 @@
 
 .btn-submit:hover {
     cursor: pointer;
+}
+
+.pagination {
+    position: absolute;
+    bottom: 20px;
+    right: 100px;
 }

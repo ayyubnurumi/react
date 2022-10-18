@@ -7,7 +7,7 @@ import BlogPost from "../pages/BlogPost/BlogPost";
 import YTPage from "../pages/YTPage/YTPage";
 import LifeCycleComp from "../pages/LifeCycleComp/LifeCycleComp";
 import Product from "../pages/Product/Product";
-import FullPost from "../pages/BlogPost/FullPost/FullPost";
+import { FullPost } from "../pages/BlogPost/FullPost/FullPost";
 
 // style
 import "./Home.css";

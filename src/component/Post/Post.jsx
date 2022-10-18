@@ -20,7 +20,7 @@ export const Post = (props) => {
                 }
               : null
           }
-          onClick={() => props.goFullPost(props.data.id)}
+          onClick={props.goFullPost(props.data.id)}
         >
           {props.data.title}
         </Title>
